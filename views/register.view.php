@@ -20,9 +20,18 @@
                 <h2 class="text-2xl font-bold text-gray-900">Rejoindre DevConnect</h2>
                 <p class="text-gray-600 mt-2">Créez votre compte développeur</p>
             </div>
+<?php if(!empty($errors)): ?>
+    <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
+        <ul>
+            <?php foreach($errors as $error): ?>
+                <li><?= $error ?></li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+<?php endif ?>
 
             <!-- Formulaire -->
-            <form class="space-y-5" method="post">
+            <form  method="post"  class="space-y-5">
                 <!-- Nom complet -->
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
@@ -74,10 +83,10 @@
                 </div>
 
                 <!-- Bouton d'inscription -->
-                <button type="submit" name="register"
+                <input type="submit" name="register" value="Créer mon compte"
                         class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 mt-2">
-                    Créer mon compte
-                </button>
+                    
+                
             </form>
 
             <!-- Séparateur -->

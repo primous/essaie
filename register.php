@@ -1,19 +1,35 @@
 <?php
+session_start();
+require('config/db.php') ;
 require('includes/functions.php');
+require('includes/constants.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require __DIR__ . '/vendor/autoload.php';
+
+
+
+$errors = [];
+
 if(isset($_POST['register'])){
 
     //veuillez si les champs existent et ne sont pas vides
-    if(not_empty(['name', 'pseudo', 'email', 'password', 'confirm_password']) ){
+    if(not_empty(['name', 'pseudo', 'email', 'password', 'password_confirm']) ){
+
+    
 
         $errors = [];
 
         extract($_POST);
 
-        if(mb_strlen($name) < 3 ){
-            $errors[] = "Votre pseudo doit avoir minimum 6 caratères";
+        
+        if(mb_strlen($pseudo) < 3 ){
+            $errors[] = "Votre pseudo doit avoir minimum 3 caratères";
         }
 
-        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
             $errors[] = "Veuillez entrer un email correct";
         }
 
@@ -35,8 +51,50 @@ if(isset($_POST['register'])){
 
 
         if(count($errors) == 0){
-            //envoyer un mail d'activation
+            $to = $email;
+            $subject = WEBSITE_NAME . ' - Activation de compte';
+
+            // ✅ Token sécurisé
+            $token = bin2hex(random_bytes(32));
+
+            // Génération du mail HTML
+            ob_start();
+            require 'templates/emails/activation.view.php';
+            $content = ob_get_clean();
+
+            $mail = new PHPMailer(true);
+
+            try {
+                // 🔧 Configuration SMTP Gmail
+                $mail->isSMTP();
+                $mail->Host       = 'smtp.gmail.com';
+                $mail->SMTPAuth   = true;
+                $mail->Username   = 'yenickoprimous@gmail.com'; // ton Gmail
+                $mail->Password   = 'trrt oyyz mqea norj'; // mot de passe d’application
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port       = 587;
+
+                // 📬 Expéditeur / Destinataire
+                $mail->setFrom('yenickoprimous@gmail.com', 'DevConnect');
+                $mail->addAddress($to);
+
+                // 📨 Contenu du mail
+                $mail->isHTML(true);
+                $mail->Subject = $subject;
+                $mail->Body    = $content;
+                $mail->CharSet = 'UTF-8';
+
+                $mail->send();
+                set_flash( 'Mail d\'activation envoyé', 'success');
+
+            } catch (Exception $e) {
+                set_flash( "Erreur SMTP ❌ : {$mail->ErrorInfo}", 'danger');
+                
+            }
+
             //informer l'utilisateur pour qu'il verifie sa boite de reception
+
+            
             //enregistrerr le user
             //message de bienvenue
             //rediriger vers le dashbord
