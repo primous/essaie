@@ -86,6 +86,8 @@ if(isset($_POST['register'])){
 
                 $mail->send();
                 set_flash( 'Mail d\'activation envoyé', 'success');
+                header('Location: index.php');
+                exit;
 
             } catch (Exception $e) {
                 set_flash( "Erreur SMTP ❌ : {$mail->ErrorInfo}", 'danger');
@@ -99,12 +101,17 @@ if(isset($_POST['register'])){
             //message de bienvenue
             //rediriger vers le dashbord
 
+        } else{
+            save_input_data();
         }
 
     } else {
         $errors[] = "Veuillez remplir tout les champs";
+        save_input_data();
     }
     
+} else {
+    clear_input_data();
 }
 
 

@@ -34,20 +34,20 @@
             <form  method="post"  class="space-y-5">
                 <!-- Nom complet -->
                 <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                    <label for="name"  class="block text-sm font-medium text-gray-700 mb-2">
                         <i class="ri-user-line mr-2"></i>Nom complet
                     </label>
-                    <input type="text" id="name" name="name"
+                    <input type="text" id="name" name="name" value="<?= get_input('name') ?>"
                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                            placeholder="Ex: Marie Dupont" required>
                 </div>
 
                 <!-- Pseudo -->
                 <div>
-                    <label for="pseudo" class="block text-sm font-medium text-gray-700 mb-2">
+                    <label for="pseudo"  class="block text-sm font-medium text-gray-700 mb-2">
                         <i class="ri-at-line mr-2"></i>Pseudo
                     </label>
-                    <input type="text" id="pseudo" name="pseudo"
+                    <input type="text" id="pseudo" name="pseudo" value="<?= get_input('pseudo') ?>"
                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                            placeholder="dev_master" required>
                 </div>
@@ -57,14 +57,14 @@
                     <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
                         <i class="ri-mail-line mr-2"></i>Email
                     </label>
-                    <input type="email" id="email" name="email"
+                    <input type="email" id="email" name="email"  value="<?= get_input('email') ?>"
                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                            placeholder="vous@exemple.com" required>
                 </div>
 
                 <!-- Mot de passe -->
                 <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                    <label for="password"  class="block text-sm font-medium text-gray-700 mb-2">
                         <i class="ri-lock-line mr-2"></i>Mot de passe
                     </label>
                     <input type="password" id="password" name="password"
