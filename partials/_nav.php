@@ -7,10 +7,24 @@
                     <span class="text-xl font-bold text-gray-900">DevConnect</span>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Accueil</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Réseau</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Projets</a>
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium">
+                    <a href="index.php" 
+                    class="font-medium hover:text-blue-600 <?php echo (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'text-blue-600' : 'text-gray-700'; ?>">
+                    Accueil
+                    </a>
+
+                    <a href="reseau.php" 
+                    class="font-medium hover:text-blue-600 <?php echo (basename($_SERVER['PHP_SELF']) == 'reseau.php') ? 'text-blue-600' : 'text-gray-700'; ?>">
+                    Réseau
+                    </a>
+
+                    <a href="register.php" 
+                    class="font-medium hover:text-blue-600 <?php echo (basename($_SERVER['PHP_SELF']) == 'register.php') ? 'text-blue-600' : 'text-gray-700'; ?>">
+                    Inscription
+                    </a>
+
+
+                    <button onclick="window.location.href='login.php'"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium">
                         Connexion
                     </button>
                 </div>

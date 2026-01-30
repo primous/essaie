@@ -21,7 +21,8 @@
                      class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center">
                     <i class="ri-user-add-line mr-2"></i> Créer un compte gratuit
                     </button>
-                    <button class="border border-gray-300 hover:border-blue-600 text-gray-800 hover:text-blue-600 px-6 py-3 rounded-lg font-medium flex items-center justify-center">
+                    <button onclick="window.location.href='login.php'"
+                    class="border border-gray-300 hover:border-blue-600 text-gray-800 hover:text-blue-600 px-6 py-3 rounded-lg font-medium flex items-center justify-center">
                         <i class="ri-github-fill mr-2"></i> Continuer avec GitHub
                     </button>
                 </div>

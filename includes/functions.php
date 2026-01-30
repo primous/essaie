@@ -1,5 +1,11 @@
 <?php
 
+function redirect(string $url, int $statusCode = 302): void
+{
+   header('Location: ' . $url, true, $statusCode);
+   exit(); // Important : arrête l'exécution du script immédiatement
+}
+
 if(!function_exists('e')){
     function e($string){
        if($string){

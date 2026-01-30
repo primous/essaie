@@ -6,6 +6,16 @@
     </footer>
 
     <!-- Script Preline UI -->
+     
     <script src="https://cdn.jsdelivr.net/npm/preline@1.5.0/dist/preline.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/parsleyjs/dist/parsley.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/parsleyjs/dist/i18n/fr.js"></script>
+    <script>
+    window.Parsley.setLocale('fr');
+    </script>
+
+
+
 </body>
 </html>

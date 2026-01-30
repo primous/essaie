@@ -54,8 +54,10 @@ if(isset($_POST['register'])){
             $to = $email;
             $subject = WEBSITE_NAME . ' - Activation de compte';
 
+            
+            $password = sha1($password);
             // ✅ Token sécurisé
-            $token = bin2hex(random_bytes(32));
+            $token = sha1($pseudo.$email.$password);
 
             // Génération du mail HTML
             ob_start();
@@ -86,6 +88,18 @@ if(isset($_POST['register'])){
 
                 $mail->send();
                 set_flash( 'Mail d\'activation envoyé', 'success');
+
+
+                $q = $db->prepare('insert into users(name, pseudo, email, password)
+                                   values(:name, :pseudo, :email, :password) ');
+
+                $q->execute([
+                    'name'=>$name,
+                    'pseudo'=>$pseudo,
+                    'email'=>$email,
+                    'password'=>$password
+                ]);
+
                 header('Location: index.php');
                 exit;
 

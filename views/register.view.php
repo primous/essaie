@@ -31,7 +31,7 @@
 <?php endif ?>
 
             <!-- Formulaire -->
-            <form  method="post"  class="space-y-5">
+            <form data-parsley-validate  method="post"  class="space-y-5">
                 <!-- Nom complet -->
                 <div>
                     <label for="name"  class="block text-sm font-medium text-gray-700 mb-2">
@@ -49,7 +49,7 @@
                     </label>
                     <input type="text" id="pseudo" name="pseudo" value="<?= get_input('pseudo') ?>"
                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                           placeholder="dev_master" required>
+                           data-parsley-minlength="3"  placeholder="dev_master" required>
                 </div>
 
                 <!-- Email -->
@@ -59,7 +59,7 @@
                     </label>
                     <input type="email" id="email" name="email"  value="<?= get_input('email') ?>"
                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                           placeholder="vous@exemple.com" required>
+                           data-parsley-trigger="keypress" placeholder="vous@exemple.com" required>
                 </div>
 
                 <!-- Mot de passe -->
@@ -79,7 +79,7 @@
                     </label>
                     <input type="password" id="password_confirm" name="password_confirm"
                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                           placeholder="●●●●●●●●" required>
+                           placeholder="●●●●●●●●" required  data-parsley-equalto="#password">
                 </div>
 
                 <!-- Bouton d'inscription -->
